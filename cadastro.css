@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  
+}
+
+
+.cabecalho .headersite {
+  display: flex;
+  justify-content: center;
+  padding-left: 510px;
+  color: white;
+  font-size: xx-large;
+  align-items: center;
+  
+}
+
+
+.containerInteiro .cabecalho{
+  width: 100%;
+  background-color: #8114b6;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 9vh;
+  position: fixed;
+
+}
+
+.containerInteiro {
+  display: flex;
+  height: 150vh;
+  background-image: url(https://www.gannett-cdn.com/presto/2019/07/29/USAT/b72ac865-44af-4a54-abef-df00d4ecbe95-IA01_REAR_Friends_22.JPG);
+  flex-direction: column;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.containerInteiro .container {
+  max-width: 500px;
+  margin: 70px auto;
+  background-color: #8014b6e3;
+  padding: 20px;
+  height: 690px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+h1 {
+  text-align: center;
+  color: beige;
+  display: flex;
+  justify-content: center;
+  font-size: 35px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  color: rgb(197, 178, 197);
+}
+
+input,
+select {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4f0475;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(209, 171, 209);
+}

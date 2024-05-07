@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+
+<body>
+    <div class="containerInteiro">
+        <div class="cabecalho">
+            <header class="headersite">
+                <a href="home.html"> <img width="300px" src="img/logoheader.png" alt=""></a>
+            </header>
+        </div>
+            <div class="headerconteiner">
+
+                <div class="container">
+                    <h1>Cadastro</h1>
+                    <form>
+                        <label for="nome"><b>Nome:</b></label>
+                        <input type="text" id="nome" name="nome" required placeholder="Nome"><br>
+
+                        <label for="email"><b>E-mail:</b></label>
+                        <input type="email" id="email" name="email" required placeholder="email@email.com"><br>
+
+                        <label for="idade"><b>Idade:</b></label>
+                        <input type="number" id="idade" name="idade" required placeholder="Idade" min="12"><br>
+
+                        <label for="celular"><b>Celular</b></label>
+                        <input type="number" id="telefone" name="telefone" required placeholder="(11) 91234-5678"><br>
+
+                        <label for="senha"><b>Senha</b></label>
+                        <input type="password" id="senha" name="senha" required placeholder="********"><br>
+
+                        <label for="confirmacao"><b>Confirmação de senha</b></label>
+                        <input type="password" id="condiramacao" name="confirmacao" required placeholder="********"><br>
+
+                        <label for="personagem"><b>Personagem Favorito:</b></label>
+                        <select id="personagem" name="personagem">
+                            <option value="#">Selecione uma opção</option>
+                            <option value="Ross">Ross</option>
+                            <option value="Rachel">Rachel</option>
+                            <option value="Chandler">Chandler</option>
+                            <option value="Monica">Monica</option>
+                            <option value="Joey">Joey</option>
+                            <option value="Phoebe">Phoebe</option>
+                        </select><br>
+
+                        <button type="submit">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+</body>
+
+</html>
