@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="quizz.css">
 </head>
-
 <body>
     <div class="cabecalho">
         <header class="headersite">
@@ -31,73 +30,83 @@
         </div>
     </div>
 
-    <script>
-        const perguntas = [
-            { pergunta: "Ross Geller tem um macaco chamado Marcel.", resposta: true },
-            { pergunta: "Chandler Bing é alérgico a gatos.", resposta: false },
-            { pergunta: "Phoebe Buffay é vegetariana.", resposta: true },
-            { pergunta: "Monica Geller é chef de cozinha.", resposta: true },
-            { pergunta: "Rachel Green trabalhou como garçonete no Central Perk.", resposta: true },
-            { pergunta: "Chandler se casou com Phoebe.", resposta: false },
-            { pergunta: "Rachel tem uma filha com o Mark.", resposta: false},
-            { pergunta: "O nome da filha de Rachel é Emma.", resposta: true},
-            { pergunta: "Ross e Rachel se casam em Vegas.", resposta: true},
-            { pergunta: "A mãe de Phoebe a abandona com 14 anos.", resposta: false}
-        ];
 
-        let perguntaAtual = 0;
-        let acertos = 0;
-        let erros = 0;
+</body>
+</html>
+<script>
+    const perguntas = [
+        { pergunta: "Ross Geller tem um macaco chamado Marcel.", resposta: true },
+        { pergunta: "Chandler Bing é alérgico a gatos.", resposta: false },
+        { pergunta: "Phoebe Buffay é vegetariana.", resposta: true },
+        { pergunta: "Monica Geller é chef de cozinha.", resposta: true },
+        { pergunta: "Rachel Green trabalhou como garçonete no Central Perk.", resposta: true },
+        { pergunta: "Chandler se casou com Phoebe.", resposta: false },
+        { pergunta: "Rachel tem uma filha com o Mark.", resposta: false },
+        { pergunta: "O nome da filha de Rachel é Emma.", resposta: true },
+        { pergunta: "Ross e Rachel se casam em Vegas.", resposta: true },
+        { pergunta: "A mãe de Phoebe a abandona com 14 anos.", resposta: false }
+    ];
+    let perguntas_embaralhadas = [];
+    let perguntaAtual = 0;
+    let acertos = 0;
+    let erros = 0;
 
-        function exibirPergunta() {
-            document.getElementById('questao').innerHTML = perguntas[perguntaAtual].pergunta;
-            document.getElementById('verdadeiro').style.display = "block";
-            document.getElementById('falso').style.display = "block";
+    function embaralharPerguntas() {
+        perguntas_embaralhadas = perguntas.slice();
+        for (let i = perguntas_embaralhadas.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [perguntas_embaralhadas[i], perguntas_embaralhadas[j]] = [perguntas_embaralhadas[j], perguntas_embaralhadas[i]];
         }
+    }
 
-        function verificarResposta(respostaUsuario) {
-            let resultado = document.createElement('div');
-            if (respostaUsuario == perguntas[perguntaAtual].resposta) {
-                acertos++;
-                resultado.textContent = "Você acertou!";
-                resultado.style.color = "green";
-            } else {
-                erros++;
-                resultado.textContent = "Você errou!";
-                resultado.style.color = "red";
-            }
-            document.getElementById('questao').appendChild(resultado);
-            document.getElementById('verdadeiro').style.display = "none";
-            document.getElementById('falso').style.display = "none";
+    function exibirPergunta() {
+        document.getElementById('questao').innerHTML = perguntas_embaralhadas[perguntaAtual].pergunta;
+        document.getElementById('verdadeiro').style.display = "block";
+        document.getElementById('falso').style.display = "block";
+    }
 
-            perguntaAtual++;
-            if (perguntaAtual < perguntas.length) {
-                setTimeout(() => {
-                    document.getElementById('questao').removeChild(resultado);
-                    exibirPergunta();
-                }, 1500); // Espera 1.5 segundos antes de mostrar a próxima pergunta
-            } else {
-                document.getElementById('questao').innerHTML = "Quiz concluído!";
+    function verificarResposta(respostaUsuario) {
+        let resultado = document.createElement('div');
+        if (respostaUsuario == perguntas_embaralhadas[perguntaAtual].resposta) {
+            acertos++;
+            resultado.textContent = "Você acertou!";
+            resultado.style.color = "green";
+        } else {
+            erros++;
+            resultado.textContent = "Você errou!";
+            resultado.style.color = "red";
+        }
+        document.getElementById('questao').appendChild(resultado);
+        document.getElementById('verdadeiro').style.display = "none";
+        document.getElementById('falso').style.display = "none";
+
+        perguntaAtual++;
+        if (perguntaAtual < perguntas_embaralhadas.length) {
+            setTimeout(() => {
+                document.getElementById('questao').removeChild(resultado);
+                exibirPergunta();
+            }, 1500); // Espera 1.5 segundos antes de mostrar a próxima pergunta
+        } else {
+            document.getElementById('questao').innerHTML = "Quiz concluído!";
                 document.getElementById('acertos').style.display = "block";
                 document.getElementById('erros').style.display = "block";
                 document.getElementById('acertos').innerHTML = "Acertos: " + acertos;
                 document.getElementById('erros').innerHTML = "Erros: " + erros;
                 document.getElementById('reiniciar').style.display = "block";
-            }
         }
+    }
 
-        function reiniciarQuiz() {
-            perguntaAtual = 0;
-            acertos = 0;
-            erros = 0;
-            document.getElementById('reiniciar').style.display = "none";
-            document.getElementById('acertos').style.display = "none";
-            document.getElementById('erros').style.display = "none";
-            exibirPergunta();
-        }
-
+    function reiniciarQuiz() {
+        perguntaAtual = 0;
+        acertos = 0;
+        erros = 0;
+        embaralharPerguntas();
+        document.getElementById('reiniciar').style.display = "none";
+        document.getElementById('acertos').style.display = "none";
+        document.getElementById('erros').style.display = "none";
         exibirPergunta();
-    </script>
-</body>
+    }
 
-</html>
+    embaralharPerguntas();
+    exibirPergunta();
+</script>

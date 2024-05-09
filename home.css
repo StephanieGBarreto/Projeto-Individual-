@@ -7,7 +7,6 @@ body {
   overflow-x: hidden;
 }
 
-
 .headersite {
   background-color: #8114b6;
   display: flex;
@@ -20,8 +19,6 @@ body {
   margin-bottom: 100px;
 
 }
-
-
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -44,11 +41,10 @@ body {
 font-size: 20px;
 }
 
-.li a:hover {
-  color: rgb(209, 171, 209);
+.logo {
+  width: 300px;
+  margin-left: 500px;
 }
-
-
 
 .ulspace {
   display: flex;
@@ -113,7 +109,7 @@ button:hover {
 .continuacao {
   display: flex;
   height: 99vh;
-  background-image: url(./img/friendsbackground.png);
+  background-image: url(https://static.wikia.nocookie.net/friends/images/8/8a/Friends_wiki_welcome.jpg/revision/latest/scale-to-width-down/670?cb=20170523203500);
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -238,7 +234,7 @@ button:hover {
 }
 
 .texto2 {
-  background-color: #8014b6bb;
+  background-color: #8014b6d4;
   color: white;
   border-radius: 2vw;
   width: 50ch;
@@ -247,9 +243,13 @@ button:hover {
   padding: 30px;
 }
 
-.oculto .teste {
-  color: antiquewhite;
-  font-size: 20px;
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 4px;
+  background-color: #8114b6;
+  color: white;
+  width: 100%;
 }
 
 

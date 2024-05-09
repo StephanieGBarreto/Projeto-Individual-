@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sobre Friends</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="quizzM.css">
+</head>
+<body>
+    <div class="cabecalho">
+        <header class="headersite">
+            <a href="home.html"> <img width="300px" src="img/logoheader.png" alt=""></a>
+        </header>
+    </div>
+    <div class="containerInteiro">
+        <div class="container">
+            <h2>Quiz sobre Friends</h2>
+            <p>Teste seus conhecimentos sobre a série Friends!</p><br><br>
+            <div id="questao"></div>
+            <button id="opcao1" class="botaoresposta" onclick="verificarResposta(1)"></button>
+            <button id="opcao2" class="botaoresposta" onclick="verificarResposta(2)"></button>
+            <button id="opcao3" class="botaoresposta" onclick="verificarResposta(3)"></button>
+            <button id="opcao4" class="botaoresposta" onclick="verificarResposta(4)"></button>
+            <div class="botoes">
+                <button id="voltar" onclick="voltarParaDashboard()">Voltar</button>
+                <button id="reiniciar" onclick="reiniciarQuiz()">Reiniciar Quiz</button>
+            </div>
+            <div class="metricas">
+                <div class="acertos" id="acertos"></div>
+                <div class="erros" id="erros"></div>
+            </div>
+            <div class="reiniciarquizz">
+                <button id="reiniciar" onclick="reiniciarQuiz()">Reiniciar Quiz</button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script>
+    const perguntas = [
+    { pergunta: "Qual personagem de Friends trabalha como chef de cozinha?", opcoes: ["Rachel Green", "Monica Geller", "Phoebe Buffay", "Chandler Bing"], resposta: 2 },
+    { pergunta: "Rachel fica grávida de quem?", opcoes: ["Gunther", "Joey Tribbiani", "Chandler Bing", "Ross Geller"], resposta: 4 },
+    { pergunta: "Chandler e Monica adotam um filho de quem?", opcoes: ["Carol", "Erica", "Janice", "Jill"], resposta: 2 },
+    { pergunta: "Quem é o colega de quarto temporário de Chandler?", opcoes: ["Eddie", "Barry", "Richard", "Mark"], resposta: 1 },
+    { pergunta: "Qual é o nome do café onde os personagens de Friends costumam se encontrar?", opcoes: ["Central Perk", "Perk Central", "Perk Friends", "Coffee Perk"], resposta: 1 },
+    { pergunta: "Quem namorou Chandler antes de Monica?", opcoes: ["Janice", "Kathy", "Janine", "Julie"], resposta: 2 },
+    { pergunta: "Qual é a profissão de David, o antigo namorado de Phoebe?", opcoes: ["Biologo", "Fisico", "Cientista", "Bibliotecario"], resposta: 3 },
+    { pergunta: "Rachel é promovida a que cargo?", opcoes: ["Modelo", "Chef de cozinha", "Garçonete", "Assistente de Compras"], resposta: 4 },
+    { pergunta: "Quem é a assistente de Chandler?", opcoes: ["Carol", "Jill", "Nina", "Julie"], resposta: 3 },
+    { pergunta: "Qual personagem tem uma irmã gêmea chamada Ursula?", opcoes: ["Phoebe Buffay", "Rachel Green", "Monica Geller", "Joey Tribbiani"], resposta: 1}
+];
+    let perguntas_embaralhadas = [];
+    let perguntaAtual = 0;
+    let acertos = 0;
+    let erros = 0;
+
+    function embaralharPerguntas() {
+        perguntas_embaralhadas = perguntas.slice();
+        for (let i = perguntas_embaralhadas.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [perguntas_embaralhadas[i], perguntas_embaralhadas[j]] = [perguntas_embaralhadas[j], perguntas_embaralhadas[i]];
+        }
+    }
+
+    function exibirPergunta() {
+        document.getElementById('questao').innerHTML = perguntas_embaralhadas[perguntaAtual].pergunta;
+        for(let i = 0; i < 4; i++) {
+            document.getElementById('opcao' + (i+1)).innerHTML = perguntas_embaralhadas[perguntaAtual].opcoes[i];
+            document.getElementById('opcao' + (i+1)).disabled = false; // Habilita os botões
+        }
+    }
+
+    function verificarResposta(respostaUsuario) {
+        let resultado = document.createElement('div');
+        if (respostaUsuario === perguntas_embaralhadas[perguntaAtual].resposta) {
+            acertos++;
+            resultado.textContent = "Você acertou!";
+            resultado.style.color = "green";
+        } else {
+            erros++;
+            resultado.textContent = "Você errou!";
+            resultado.style.color = "red";
+        }
+        document.getElementById('questao').appendChild(resultado);
+        for(let i = 0; i < 4; i++) {
+            document.getElementById('opcao' + (i+1)).disabled = true; // Desabilita os botões após a resposta
+        }
+
+        perguntaAtual++;
+        if (perguntaAtual < perguntas_embaralhadas.length) {
+            setTimeout(() => {
+                document.getElementById('questao').removeChild(resultado);
+                exibirPergunta();
+            }, 1500); // Espera 1.5 segundos antes de mostrar a próxima pergunta
+        } else {
+            document.getElementById('questao').innerHTML = "Quiz concluído!";
+            document.getElementById('acertos').style.display = "block";
+            document.getElementById('erros').style.display = "block";
+            document.getElementById('acertos').innerHTML = "Acertos: " + acertos;
+            document.getElementById('erros').innerHTML = "Erros: " + erros;
+            document.getElementById('reiniciar').style.display = "block";
+            document.getElementById('voltar').style.display = "block"; // Mostra o botão "Voltar"
+        }
+    }
+
+    function reiniciarQuiz() {
+        perguntaAtual = 0;
+        acertos = 0;
+        erros = 0;
+        embaralharPerguntas();
+        document.getElementById('reiniciar').style.display = "none";
+        document.getElementById('voltar').style.display = "none"; // Esconde o botão "Voltar"
+        document.getElementById('acertos').style.display = "none";
+        document.getElementById('erros').style.display = "none";
+        exibirPergunta();
+        // Mostrar botões de opção
+        for(let i = 0; i < 4; i++) {
+            document.getElementById('opcao' + (i+1)).style.display = "block";
+        }
+    }
+
+    function voltarParaDashboard() {
+        window.location.href = "dashboard.html"; // Redireciona para a dashboard
+    }
+
+    embaralharPerguntas();
+    exibirPergunta();
+</script>

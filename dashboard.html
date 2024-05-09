@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua pagina</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="inicio">
+            <p>Nome do Usuário</p>
+        </div>
+        <h2>MENU</h2>
+        <nav>
+            <ul>
+                <li><a href="homeSECUNDARIA.html">Home</a></li>
+                <li><a href="quizzM.html">Quiz Nível Médio</a></li>
+                <li><a href="quizzD.html">Quiz Nível Difícil</a></li>
+                <li><a href="#">Ranking</a></li>
+                <li><a href="login.html">Sair</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="content">
+        <header>
+            <h1>Legal te ter por aqui!</h1>
+        </header>
+        <main>
+            <p>Bem-vindo(a) à sua página de Friends!</p>
+        </main>
+
+        
+        
+    </div>
+    <div class="graficos">
+        <h2>Acompanhe a sua pontuação</h2>
+        <div class="barras">
+            <canvas id="graficoBarras" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>
+<script>  
+   const dados = {
+            labels: ['Tentativa 1', 'Tentativa 2', 'Tentativa 3'], // Labels para as tentativas
+            datasets: [{
+                label: 'Acertos',
+                data: [6, 10, 9], // Quantidade de acertos por tentativa
+                backgroundColor: 'rgba(54, 162, 235, 0.5)', // Cor para acertos
+                borderColor: 'rgba(54, 162, 235, 1)', // Cor da borda para acertos
+                borderWidth: 1
+            }, {
+                label: 'Erros',
+                data: [4, 0, 1], // Quantidade de erros por tentativa
+                backgroundColor: 'rgba(255, 99, 132, 0.5)', // Cor para erros
+                borderColor: 'rgba(255, 99, 132, 1)', // Cor da borda para erros
+                borderWidth: 1
+            }]
+        };
+
+        // Opções do gráfico
+        const opcoes = {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Quantidade' // Rótulo do eixo y
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Tentativas' // Rótulo do eixo x
+                    }
+                }]
+            }
+        };
+
+        // Criando o gráfico de barras
+        const ctx = document.getElementById('graficoBarras').getContext('2d');
+        const graficoBarras = new Chart(ctx, {
+            type: 'bar',
+            data: dados,
+            options: opcoes
+        });
+
+</script>

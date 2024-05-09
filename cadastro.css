@@ -28,7 +28,7 @@ body {
 
 .containerInteiro {
   display: flex;
-  height: 150vh;
+  height: 135vh;
   background-image: url(https://www.gannett-cdn.com/presto/2019/07/29/USAT/b72ac865-44af-4a54-abef-df00d4ecbe95-IA01_REAR_Friends_22.JPG);
   flex-direction: column;
   width: 100%;
@@ -56,7 +56,7 @@ h1 {
   font-size: 35px;
 }
 
-form {
+.cadastro1 {
   display: flex;
   flex-direction: column;
 }
@@ -85,4 +85,13 @@ button {
 
 button:hover {
   background-color: rgb(209, 171, 209);
+}
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 4px;
+  background-color: #8114b6;
+  color: white;
+  width: 100%;
 }

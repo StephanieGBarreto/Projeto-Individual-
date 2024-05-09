@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sobre Friends</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="quizzD.css">
+</head>
+
+<body>
+    <div class="cabecalho">
+        <header class="headersite">
+            <a href="home.html"> <img width="300px" src="img/logoheader.png" alt=""></a>
+        </header>
+    </div>
+    <div class="containerInteiro">
+        <div class="container">
+            <h2>Quiz sobre Friends</h2>
+            <p>Teste seus conhecimentos sobre a série Friends!</p><br><br>
+            <div id="questao"></div>
+            <button id="opcao1" class="botaoresposta" onclick="verificarResposta(1)"></button>
+            <button id="opcao2" class="botaoresposta" onclick="verificarResposta(2)"></button>
+            <button id="opcao3" class="botaoresposta" onclick="verificarResposta(3)"></button>
+            <button id="opcao4" class="botaoresposta" onclick="verificarResposta(4)"></button>
+            <div class="botoes">
+                <button id="voltar" onclick="voltarParaDashboard()">Voltar</button>
+                <button id="reiniciar" onclick="reiniciarQuiz()">Reiniciar Quiz</button>
+            </div>
+            <div class="metricas">
+                <div class="acertos" id="acertos"></div>
+                <div class="erros" id="erros"></div>
+            </div>
+            <div class="reiniciarquizz">
+                <button id="reiniciar" onclick="reiniciarQuiz()">Reiniciar Quiz</button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+<script>
+    const perguntas = [
+        { pergunta: "Qual é o nome do cachorro de Rachel?", opcoes: ["Chi Chi", "Fluffy", "LaPooh", "Patricia"], resposta: 3 },
+        { pergunta: "Quantas irmãos tem Joey Tribbiani?", opcoes: ["6", "7", "8", "9"], resposta: 2 },
+        { pergunta: "Qual é o nome do vizinho que mora abaixo de Monica e Rachel e que detesta o barulho?", opcoes: ["Sr. Hentles", "Sr. Heckles", "Sr. Hanckles", "Sr. Rank"], resposta: 2 },
+        { pergunta: "Qual é o nome do colega de trabalho de Chandler que ninguém consegue lembrar?", opcoes: ["Mody", "Toby", "Bob", "Eddie"], resposta: 3 },
+        { pergunta: "Qual é a nacionalidade de Janice?", opcoes: ["Italiana", "Canadense", "Inglesa", "Russa"], resposta: 3 },
+        { pergunta: "Quem canta a música tema I'll Be There for You da série Friends?", opcoes: ["Green Day", "The Cranberries", "The Rembrandts", "Hootie & the Blowfish"], resposta: 3 },
+        { pergunta: "Qual é o nome do personagem interpretado por Bruce Willis?", opcoes: ["Paul Stevens", "Tommy Chong", "Tom Selleck", "Richard Burke"], resposta: 1 },
+        { pergunta: "O que Joey nunca compartilha?", opcoes: ["Seu cabelo", "Sua pizza", "Seu macacão", "Sua comida"], resposta: 4 },
+        { pergunta: "Onde seria a lua de mel de Ross e Emilly?", opcoes: ["Havai", "Barbados", "Paris", "Grécia"], resposta: 4 },
+        { pergunta: "Qual é o primeiro nome do pai de Ross e Monica?", opcoes: ["Jack", "Richard", "Frank", "Leonard"], resposta: 1 }
+    ];
+    let perguntas_embaralhadas = [];
+    let perguntaAtual = 0;
+    let acertos = 0;
+    let erros = 0;
+
+    function embaralharPerguntas() {
+        perguntas_embaralhadas = perguntas.slice();
+        for (let i = perguntas_embaralhadas.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [perguntas_embaralhadas[i], perguntas_embaralhadas[j]] = [perguntas_embaralhadas[j], perguntas_embaralhadas[i]];
+        }
+    }
+
+    function exibirPergunta() {
+        document.getElementById('questao').innerHTML = perguntas_embaralhadas[perguntaAtual].pergunta;
+        for (let i = 0; i < 4; i++) {
+            document.getElementById('opcao' + (i + 1)).innerHTML = perguntas_embaralhadas[perguntaAtual].opcoes[i];
+            document.getElementById('opcao' + (i + 1)).disabled = false; // Habilita os botões
+        }
+    }
+
+    function verificarResposta(respostaUsuario) {
+        let resultado = document.createElement('div');
+        if (respostaUsuario === perguntas_embaralhadas[perguntaAtual].resposta) {
+            acertos++;
+            resultado.textContent = "Você acertou!";
+            resultado.style.color = "green";
+        } else {
+            erros++;
+            resultado.textContent = "Você errou!";
+            resultado.style.color = "red";
+        }
+        document.getElementById('questao').appendChild(resultado);
+        for (let i = 0; i < 4; i++) {
+            document.getElementById('opcao' + (i + 1)).disabled = true; // Desabilita os botões após a resposta
+        }
+
+        perguntaAtual++;
+        if (perguntaAtual < perguntas_embaralhadas.length) {
+            setTimeout(() => {
+                document.getElementById('questao').removeChild(resultado);
+                exibirPergunta();
+            }, 1500); // Espera 1.5 segundos antes de mostrar a próxima pergunta
+        } else {
+            document.getElementById('questao').innerHTML = "Quiz concluído!";
+            document.getElementById('acertos').style.display = "block";
+            document.getElementById('erros').style.display = "block";
+            document.getElementById('acertos').innerHTML = "Acertos: " + acertos;
+            document.getElementById('erros').innerHTML = "Erros: " + erros;
+            document.getElementById('reiniciar').style.display = "block";
+            document.getElementById('voltar').style.display = "block"; // Mostra o botão "Voltar"
+
+            // Oculta os botões de opção
+            for (let i = 0; i < 4; i++) {
+                document.getElementById('opcao' + (i + 1)).style.display = "none";
+            }
+        }
+    }
+    function reiniciarQuiz() {
+        perguntaAtual = 0;
+        acertos = 0;
+        erros = 0;
+        embaralharPerguntas();
+        document.getElementById('reiniciar').style.display = "none";
+        document.getElementById('voltar').style.display = "none"; // Esconde o botão "Voltar"
+        document.getElementById('acertos').style.display = "none";
+        document.getElementById('erros').style.display = "none";
+        exibirPergunta();
+        // Mostrar botões de opção
+        for (let i = 0; i < 4; i++) {
+            document.getElementById('opcao' + (i + 1)).style.display = "block";
+        }
+    }
+
+    function voltarParaDashboard() {
+        window.location.href = "dashboard.html"; // Redireciona para a dashboard
+    }
+
+    embaralharPerguntas();
+    exibirPergunta();
+</script>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
     <div class="containerInteiro">
         <div class="cabecalho">
@@ -16,16 +18,45 @@
         </div>
         <div class="headerconteiner">
             <div class="container">
-                <h1>Login - Friends</h1>
-                <form id="loginForm" action="home.html">
+                <h1>Login</h1>
+                <div class="login1" action="home.html">
                     <label for="email"><b>Email:</b></label>
-                    <input type="email" id="email" name="email" required placeholder="teste@teste.com"><br>
+                    <input type="email" id="email" name="email" required placeholder="exemplo@exemplo.com"><br>
                     <label for="senha"><b>Senha:</b></label>
                     <input type="password" id="senha" name="senha" required placeholder="********"><br>
-                    <button type="submit">Entrar</button>
-                </form>
+                    <button onclick="acessar()" type="submit">Entrar</button>
+                </div>
             </div>
         </div>
+        <div class="footer"> Projeto individual © 2024</div>
     </div>
 </body>
+
 </html>
+<script>
+    function acessar() {
+        var Email = email.value;
+        var Senha = senha.value;
+        var TamanhoSenha = Senha.length;
+        var TerminaCom = Email.endsWith(".com");
+        var posicaoArroba = Email.indexOf("@");
+
+        if (Email != 0) {
+            if (TerminaCom == true) {
+                if (posicaoArroba > 0) {
+                    if (TamanhoSenha >= 8) {
+                        window.location.href = "dashboard.html";
+                    } else {
+                        alert("A senha precisa conter no minimo 8 caracteres.")
+                    }
+                } else {
+                    alert("O email precisa conter @")
+                }
+            } else {
+                alert("O email precisa terminar com '.com'")
+            }
+        } else {
+            alert("O email não pode estar vazio.")
+        }
+    }
+</script>

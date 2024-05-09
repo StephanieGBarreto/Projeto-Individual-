@@ -1,0 +1,255 @@
+html{
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: gray;
+    overflow-x: hidden;
+  }
+  
+  .headersite {
+    background-color: #8114b6;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 8vh;
+    box-shadow: 1vh 1vh 1vh 2vh #1f052c;
+    position: fixed;
+    margin-bottom: 100px;
+  
+  }
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3vh;
+    margin-right: 3vh;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .li a {
+  font-size: 20px;
+  }
+  
+  .logo {
+    width: 300px;
+    margin-left: 500px;
+  }
+  
+  .ulspace {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 100px;
+    margin-top: 15px;
+  }
+  
+  
+  
+  .a {
+    padding-left: 100px;
+    color: white;
+    font-size: xx-large;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  
+  .inicio {
+    display: flex;
+    height: 100vh;
+    background-image: url(./img/friendsbackground.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .botaoquizz {
+    width: 500px;
+    height: 500px;
+    padding: 50px;
+    padding-top: 30px;
+    margin-top: 20px;
+    margin-right: 20%;
+    margin-left: 745px;
+  }
+  
+  .buttonPurple {
+    display: flex;
+    padding: 10px 20px;
+    background-color: #8014b6bb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 9px;
+  }
+  
+  .buttonPurple a{
+    color: #fff;
+  }
+  
+  button:hover {
+    background-color: rgb(209, 171, 209);
+  }
+  
+  .continuacao {
+    display: flex;
+    height: 99vh;
+    background-image: url(https://static.wikia.nocookie.net/friends/images/8/8a/Friends_wiki_welcome.jpg/revision/latest/scale-to-width-down/670?cb=20170523203500);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .elenco {
+    width: 95%;
+    height: 90%;
+    background-color: #040305bc;
+    border-radius: 50px;
+    border-color:  #8014b6bb;
+    border-style: inset;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7vh;
+  }
+  
+  .elenco p {
+    color: beige;
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+  }
+  
+  .atrizes {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+  }
+  
+  .oculto {
+    display: none;
+    color: #fff;
+    width: 220px;
+  }
+  
+  .monica:hover .original {
+    display: none;
+  }
+  
+  .monica:hover .oculto {
+    display: block;
+  }
+  
+  .monica:hover {
+    background-color: rgba(128, 128, 128, 0.176);
+    border-radius: 10px;
+  }
+  
+  .atrizes img {
+    width: 170px;
+    height: 170px;
+    border-style: inset;
+    border-radius: 50px;
+  }
+  
+  .atores {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+  }
+  
+  .atores img {
+    width: 170px;
+    height: 170px;
+    border-style: inset;
+    border-radius: 50px;
+  }
+  
+  .texto {
+    background-color: #8014b6bb;
+    color: white;
+    border-radius: 2vw;
+    margin-top: 25vh;
+    padding-top: 40px;
+    width: 50ch;
+    margin-left: 60vw;
+    height: 30vh;
+    box-shadow: 1vw 1vh 1vw 1vh black;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .continuacao1 {
+    display: flex;
+    background-image: url(https://i.etsystatic.com/14577676/r/il/81d238/2480310724/il_fullxfull.2480310724_m8d9.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .continuacao1 h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    color: #8114b6;
+  }
+  
+  .texto1 {
+    background-color: #8014b6bb;
+    color: white;
+    border-radius: 2vw;
+    width: 50ch;
+    box-shadow: 1vw 1vh 1vw 1vh black;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .teste1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 504px;
+  }
+  
+  .texto2 {
+    background-color: #8014b6d4;
+    color: white;
+    border-radius: 2vw;
+    width: 50ch;
+    box-shadow: 1vw 1vh 1vw 1vh black;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 4px;
+    background-color: #8114b6;
+    color: white;
+    width: 100%;
+  }
+  
+  
