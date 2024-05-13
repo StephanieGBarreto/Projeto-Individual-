@@ -48,7 +48,7 @@ body {
 }
 
 header {
-    background-image: url(https://i.pinimg.com/originals/72/61/8f/72618f72b859755318979b39ca6db6b0.jpg);
+    background-image: url(https://i.pinimg.com/originals/00/14/f5/0014f5470c1517645c41aa380f254b14.png);
     padding: 25px;
     background-size: cover;
   background-repeat: no-repeat;
@@ -56,6 +56,11 @@ header {
 
 main {
     color: #fff;
+}
+
+.content main .p{
+    display: flex;
+    justify-content: center;
 }
 
 .inicio {
@@ -70,10 +75,11 @@ main {
 }
 
 .graficos {
-    display: flex; 
-    margin-left: 430px;
+    display: flex;
+    margin-left: 250px;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .graficos div {
@@ -92,6 +98,7 @@ h1 {
     display: flex;
     color: antiquewhite;
     font-size: xx-large;
+    margin-left: 415px;
 }
 
 h2 {
@@ -102,8 +109,8 @@ h2 {
 
 h3 {
     display: flex;
+    justify-content: center;
     color: antiquewhite;
-    margin-left: 257px;
 }
 
 .barras {
@@ -112,3 +119,4 @@ h3 {
     height: 340px;
     width: 730px;
 }
+
