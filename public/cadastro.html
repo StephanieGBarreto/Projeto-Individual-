@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/cadastro.css">
+  <!-- <link rel="stylesheet" href="./css/estilo.css"> -->
+  <script src="./js/sessao.js"></script>
+
+</head>
+
+<body onload="listar()">
+  <div class="containerInteiro">
+    <div class="cabecalho">
+      <header class="headersite">
+        <a href="index.html"> <img width="300px" src="img/logoheader.png" alt=""></a>
+      </header>
+    </div>
+    <div class="headerconteiner">
+
+      <div class="container">
+        <div class="alerta_erro">
+          <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+          </div>
+        </div>
+        <h1>Cadastro</h1>
+        <div class="cadastro1">
+          <label for="nome"><b>Nome:</b></label>
+          <input type="text" id="nome_input" name="nome" required placeholder="Nome"><br>
+
+          <label for="email"><b>E-mail:</b></label>
+          <input type="email" id="email_input" name="email" required placeholder="email@email.com"><br>
+
+          <label for="idade"><b>Idade:</b></label>
+          <input type="number" id="idade_input" name="idade" required placeholder="Idade"><br>
+
+          <label for="celular"><b>Celular</b></label>
+          <input type="text" id="celular_input" name="telefone" required placeholder="(11) 91111-1111"><br>
+
+          <label for="senha"><b>Senha</b></label>
+          <input type="password" id="senha_input" name="senha" required placeholder="********"><br>
+
+          <label for="confirmacao"><b>Confirmação de senha</b></label>
+          <input type="password" id="confirmacao_senha_input" name="confirmacao" required placeholder="********"><br>
+
+          <label for="personagem"><b>Personagem Favorito:</b></label>
+          <select id="listaPersonagens" name="personagem">
+            <option value="#">Selecione uma opção</option>
+          </select><br>
+
+          <button onclick="cadastrar()" type="submit">Cadastrar</button>
+          <div id="div_aguardar" class="loading-div">
+            <img src="./assets/circle-loading.gif" id="loading-gif" />
+          </div>
+        </div>
+      </div>
+      <div id="div_erros_login"></div>
+    </div>
+    <div class="footer"> Projeto individual © 2024</div>
+  </div>
+</body>
+</body>
+
+</html>
+<script>
+  // function cadastrar() {
+  //     var TamanhoCel = Celular.length;
+  //     var Posicaotraco = Celular.indexOf("-");
+  //     var TamanhoSenha = Senha.length;
+  //     var TerminaCom = Email.endsWith(".com");
+  //     var posicaoArroba = Email.indexOf("@");
+  //     console.log(TamanhoCel);
+
+  //     if (Nome != 0) {
+  //         if (TerminaCom == true) {
+  //             if (posicaoArroba > 0) {
+  //                 if (Idade >= 12) {
+  //                     if (TamanhoCel == 12) {
+  //                         if (Posicaotraco >= 0) {
+  //                             if (TamanhoSenha >= 8) {
+  //                                 if (Confirmacao == Senha) {
+  //                                     if (Personagem != '#') {
+  //                                         window.location.href = "login.html";
+  //                                     } else {
+  //                                         alert("Você precisa escolher um personagem.")
+  //                                     }
+  //                                 } else {
+  //                                     alert("As senhas precisam ser iguais.")
+  //                                 }
+  //                             } else {
+  //                                 alert("A senha precisa conter no minimo 8 caracteres.")
+  //                             }
+  //                         } else {
+  //                             alert("Validação incorreta! O número precisa de traço. Ex: 1190000-0000")
+  //                         }
+  //                     } else {
+  //                         alert("O número de celular precisa conter 12 caracteres.")
+  //                     }
+  //                 } else {
+  //                     alert("Você precisa ser maior de 12 anos para se cadastrar.")
+  //                 }
+  //             } else {
+  //                 alert("O email precisa conter @")
+  //             }
+  //         } else {
+  //             alert("O email precisa terminar com '.com'")
+  //         }
+  //     } else {
+  //         alert("O nome não pode estar vazio.")
+  //     }
+
+  // }
+
+  function cadastrar() {
+    aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var idadeVar = idade_input.value;
+    var celularVar = celular_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var personagemVar = listaPersonagens.value;
+
+    var TamanhoCel = celularVar.length;
+    var Posicaotraco = celularVar.indexOf("-");
+    var TamanhoSenha = senhaVar.length;
+    var TerminaCom = emailVar.endsWith(".com");
+    var posicaoArroba = emailVar.indexOf("@");
+    console.log(TamanhoCel);
+
+      if (TerminaCom == true) {
+        if (posicaoArroba > 0) {
+          if (idadeVar >= 12) {
+            if (TamanhoCel == 12) {
+              if (Posicaotraco >= 0) {
+                if (TamanhoSenha >= 8) {
+                  if (confirmacaoSenhaVar == senhaVar) {
+                    if (personagemVar != '#') {
+                      fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        idadeServer: idadeVar,
+        celularServer: celularVar,
+        senhaServer: senhaVar,
+        personagensServer: personagemVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+                      window.location.href = "login.html";
+                    } else {
+                      alert("Você precisa escolher um personagem.")
+                    }
+                  } else {
+                    alert("As senhas precisam ser iguais.")
+                  }
+                } else {
+                  alert("A senha precisa conter no minimo 8 caracteres.")
+                }
+              } else {
+                alert("Validação incorreta! O número precisa de traço. Ex: 1190000-0000")
+              }
+            } else {
+              alert("O número de celular precisa conter 12 caracteres.")
+            }
+          } else {
+            alert("Você precisa ser maior de 12 anos para se cadastrar.")
+          }
+        } else {
+          alert("O email precisa conter @")
+        }
+      } else {
+        alert("O email precisa terminar com '.com'")
+      }
+    
+
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      idadeVar == "" ||
+      celularVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      personagemVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    
+
+    return false;
+  }
+
+  function listar() {
+    fetch("/personagens/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((personagens) => {
+          personagens.forEach((personagem) => {
+            listaPersonagens.innerHTML += `<option value='${personagem.idPersonagem}'>${personagem.nome}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
