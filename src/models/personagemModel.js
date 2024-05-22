@@ -18,10 +18,4 @@ function buscarPornome(nome) {
   return database.executar(instrucaoSql);
 }
 
-// function cadastrar(razaoSocial, nome) {
-//   var instrucaoSql = `INSERT INTO personagem (razao_social, nome) VALUES ('${razaoSocial}', '${nome}')`;
-
-//   return database.executar(instrucaoSql);
-// }
-
 module.exports = { buscarPornome, buscarPorId, listar };

@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./css/cadastro.css">
+  <link rel="stylesheet" href="cadastro.css">
+
   <!-- <link rel="stylesheet" href="./css/estilo.css"> -->
   <script src="./js/sessao.js"></script>
 
@@ -52,8 +53,8 @@
           </select><br>
 
           <button onclick="cadastrar()" type="submit">Cadastrar</button>
-          <div id="div_aguardar" class="loading-div">
-            <img src="./assets/circle-loading.gif" id="loading-gif" />
+          <div id="div_aguardar" class="loading-div" style="display: none;">
+            <img src="./assets/circle-loading.gif" height="30em" id="loading-gif" />
           </div>
         </div>
       </div>
@@ -66,59 +67,8 @@
 
 </html>
 <script>
-  // function cadastrar() {
-  //     var TamanhoCel = Celular.length;
-  //     var Posicaotraco = Celular.indexOf("-");
-  //     var TamanhoSenha = Senha.length;
-  //     var TerminaCom = Email.endsWith(".com");
-  //     var posicaoArroba = Email.indexOf("@");
-  //     console.log(TamanhoCel);
-
-  //     if (Nome != 0) {
-  //         if (TerminaCom == true) {
-  //             if (posicaoArroba > 0) {
-  //                 if (Idade >= 12) {
-  //                     if (TamanhoCel == 12) {
-  //                         if (Posicaotraco >= 0) {
-  //                             if (TamanhoSenha >= 8) {
-  //                                 if (Confirmacao == Senha) {
-  //                                     if (Personagem != '#') {
-  //                                         window.location.href = "login.html";
-  //                                     } else {
-  //                                         alert("Você precisa escolher um personagem.")
-  //                                     }
-  //                                 } else {
-  //                                     alert("As senhas precisam ser iguais.")
-  //                                 }
-  //                             } else {
-  //                                 alert("A senha precisa conter no minimo 8 caracteres.")
-  //                             }
-  //                         } else {
-  //                             alert("Validação incorreta! O número precisa de traço. Ex: 1190000-0000")
-  //                         }
-  //                     } else {
-  //                         alert("O número de celular precisa conter 12 caracteres.")
-  //                     }
-  //                 } else {
-  //                     alert("Você precisa ser maior de 12 anos para se cadastrar.")
-  //                 }
-  //             } else {
-  //                 alert("O email precisa conter @")
-  //             }
-  //         } else {
-  //             alert("O email precisa terminar com '.com'")
-  //         }
-  //     } else {
-  //         alert("O nome não pode estar vazio.")
-  //     }
-
-  // }
-
   function cadastrar() {
     aguardar();
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var idadeVar = idade_input.value;
@@ -134,79 +84,79 @@
     var posicaoArroba = emailVar.indexOf("@");
     console.log(TamanhoCel);
 
-      if (TerminaCom == true) {
-        if (posicaoArroba > 0) {
-          if (idadeVar >= 12) {
-            if (TamanhoCel == 12) {
-              if (Posicaotraco >= 0) {
-                if (TamanhoSenha >= 8) {
-                  if (confirmacaoSenhaVar == senhaVar) {
-                    if (personagemVar != '#') {
-                      fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        idadeServer: idadeVar,
-        celularServer: celularVar,
-        senhaServer: senhaVar,
-        personagensServer: personagemVar
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+    if (TerminaCom == true) {
+      if (posicaoArroba > 0) {
+        if (idadeVar >= 12) {
+          if (TamanhoCel == 12) {
+            if (Posicaotraco >= 0) {
+              if (TamanhoSenha >= 8) {
+                if (confirmacaoSenhaVar == senhaVar) {
+                  if (personagemVar != '#') {
+                    fetch("/usuarios/cadastrar", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        // crie um atributo que recebe o valor recuperado aqui
+                        // Agora vá para o arquivo routes/usuario.js
+                        nomeServer: nomeVar,
+                        emailServer: emailVar,
+                        idadeServer: idadeVar,
+                        celularServer: celularVar,
+                        senhaServer: senhaVar,
+                        personagensServer: personagemVar
+                      }),
+                    })
+                      .then(function (resposta) {
+                        console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
-          cardErro.style.display = "block";
+                        if (resposta.ok) {
+                          cardErro.style.display = "block";
 
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                          mensagem_erro.innerHTML =
+                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
+                          setTimeout(() => {
+                            window.location = "login.html";
+                          }, "9000");
 
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-                      window.location.href = "login.html";
-                    } else {
-                      alert("Você precisa escolher um personagem.")
-                    }
+                          limparFormulario();
+                          finalizarAguardar();
+                        } else {
+                          throw "Houve um erro ao tentar realizar o cadastro!";
+                        }
+                      })
+                      .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                        finalizarAguardar();
+                      });
+                    window.location.href = "login.html";
                   } else {
-                    alert("As senhas precisam ser iguais.")
+                    alert("Você precisa escolher um personagem.")
                   }
                 } else {
-                  alert("A senha precisa conter no minimo 8 caracteres.")
+                  alert("As senhas precisam ser iguais.")
                 }
               } else {
-                alert("Validação incorreta! O número precisa de traço. Ex: 1190000-0000")
+                alert("A senha precisa conter no minimo 8 caracteres.")
               }
             } else {
-              alert("O número de celular precisa conter 12 caracteres.")
+              alert("Validação incorreta! O número precisa de traço. Ex: 1190000-0000")
             }
           } else {
-            alert("Você precisa ser maior de 12 anos para se cadastrar.")
+            alert("O número de celular precisa conter 12 caracteres.")
           }
         } else {
-          alert("O email precisa conter @")
+          alert("Você precisa ser maior de 12 anos para se cadastrar.")
         }
       } else {
-        alert("O email precisa terminar com '.com'")
+        alert("O email precisa conter @")
       }
-    
+    } else {
+      alert("O email precisa terminar com '.com'")
+    }
+
 
     if (
       nomeVar == "" ||
@@ -217,9 +167,7 @@
       confirmacaoSenhaVar == "" ||
       personagemVar == ""
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        alert("Você só pode prosseguir após preencher todos os campos.");
 
       finalizarAguardar();
       return false;
@@ -228,7 +176,7 @@
     }
 
     // Enviando o valor da nova input
-    
+
 
     return false;
   }

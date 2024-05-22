@@ -109,7 +109,7 @@ button:hover {
 .continuacao {
   display: flex;
   height: 99vh;
-  background-image: url(https://static.wikia.nocookie.net/friends/images/8/8a/Friends_wiki_welcome.jpg/revision/latest/scale-to-width-down/670?cb=20170523203500);
+  background-image: url(https://th.bing.com/th/id/R.c808b093b2a446e064c236c73e7c8be7?rik=wNEO4fWuRQSRpQ&riu=http%3a%2f%2fwww.wired.com%2fwp-content%2fuploads%2f2014%2f12%2ffriends-binge-ft.jpg&ehk=NJcyQlJIz8aUaiemZN9LZyljbt%2bI1ndXK5qHXBc1YFo%3d&risl=&pid=ImgRaw&r=0);
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -148,6 +148,8 @@ button:hover {
   display: none;
   color: #fff;
   width: 220px;
+  padding: 13px;
+  
 }
 
 .monica:hover .original {
@@ -156,6 +158,7 @@ button:hover {
 
 .monica:hover .oculto {
   display: block;
+  transition: all 0.5s ease-in-out;
 }
 
 .monica:hover {
@@ -251,5 +254,4 @@ button:hover {
   color: white;
   width: 100%;
 }
-
 

@@ -59,6 +59,7 @@
     let perguntaAtual = 0;
     let acertos = 0;
     let erros = 0;
+    var fkUsuarioVar = sessionStorage.ID_USUARIO;
 
     function embaralharPerguntas() {
         perguntas_embaralhadas = perguntas.slice();
@@ -87,6 +88,8 @@
             resultado.textContent = "Você errou!";
             resultado.style.color = "red";
         }
+        sessionStorage.setItem('acertos', acertos);
+        sessionStorage.setItem('erros', erros);
         document.getElementById('questao').appendChild(resultado);
         for (let i = 0; i < 4; i++) {
             document.getElementById('opcao' + (i + 1)).disabled = true; // Desabilita os botões após a resposta
@@ -106,6 +109,21 @@
             document.getElementById('erros').innerHTML = "Erros: " + erros;
             document.getElementById('reiniciar').style.display = "block";
             document.getElementById('voltar').style.display = "block"; // Mostra o botão "Voltar"
+
+            // fazer fetch no end point de inserção dos dados
+            fetch("http://localhost:3333/banco/guardar", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        // crie um atributo que recebe o valor recuperado aqui
+                        // Agora vá para o arquivo routes/usuario.js
+                        fkUsuarioServer: fkUsuarioVar,
+                        qtdAcertosServer: acertos,
+                        qtdErrosServer: erros
+                      }),
+            }).then((res) => console.log(res.json())).then((res) => {})
 
             // Oculta os botões de opção
             for (let i = 0; i < 4; i++) {

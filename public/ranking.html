@@ -11,9 +11,10 @@
 
 <body>
     
+
     <div class="navbar">
         <div class="inicio">
-            <p>Nome do Usuário</p>
+            <p>Olá, <span id="b_usuario">usuário</span>!</p>
         </div>
         <h2>MENU</h2>
         <nav>
@@ -42,7 +43,7 @@
         
     </div>
     <div class="graficos">
-        <h3>RANKING GERAL</h3>
+        <h3>RANKING GERAL - QUIZ DIFICIL</h3>
         <div class="barras">
             <canvas id="rankingChart" width="400" height="200"></canvas>
         </div>
@@ -53,6 +54,8 @@
 
 </html>
 <script>  
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
     const dados = {
         labels: ['1º Lugar', '2º Lugar', '3º Lugar', '4º Lugar', '5º Lugar'],
         datasets: [{
