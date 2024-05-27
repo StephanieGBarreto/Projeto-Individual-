@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sua pagina</title>
+    <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="ranking.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    
+
 
     <div class="navbar">
         <div class="inicio">
@@ -22,7 +22,7 @@
                 <li><a href="dashboard.html">Home</a></li>
                 <li><a href="quizzM.html">Quiz Nível Médio</a></li>
                 <li><a href="quizzD.html">Quiz Nível Difícil</a></li>
-                <li><a href="ranking.html">Ranking</a></li>
+                <li><a href="ranking.css.html">Personagens</a></li>
                 <li><a href="homeSECUNDARIA.html">Voltar ao site</a></li>
                 <li><a href="login.html">Sair</a></li>
             </ul>
@@ -31,74 +31,167 @@
 
     <div class="content">
         <header>
-            <h1>RANKING</h1>
+            <h1>Personagens</h1>
         </header>
         <main>
             <div class="p">
-                <p>Como será sua pontuação comparada aos seus adversários?</p>
+                <h1>PERSONAGENS SECUNDÁRIOS</h1>
             </div>
+
+
+
+
+
+
+
+
+                <div class="container">
+                    <div class="card">
+                      <img class="background" src="https://criticalhits.com.br/wp-content/uploads/2022/03/melhores-personagens-secundarios-friends-2-910x684.jpg" alt="">
+              
+                      <div class="card-content">
+                        <div class="profile-image">
+            
+                        </div>
+              
+                        <h3 class="title">Gunther</h3>
+                      </div>
+                      <div class="backdrop"></div>
+                    </div>
+              
+                    <div class="card">
+                      <img class="background" src="https://criticalhits.com.br/wp-content/uploads/2022/03/melhores-personagens-secundarios-friends-11-910x512.jpg" alt="">
+              
+                      <div class="card-content">
+                        <div class="profile-image">
+            
+                        </div>
+              
+                        <h3 class="title">Janice Hosenstein</h3>
+                      </div>
+                      <div class="backdrop"></div>
+                    </div>
+              
+                    <div class="card">
+                      <img class="background" src="./img/friendsbackground.png" alt="">
+              
+                      <div class="card-content">
+                        <div class="profile-image">
+                          
+                        </div>
+              
+                        <h3 class="title">God Of War</h3>
+                      </div>
+                      <div class="backdrop"></div>
+                    </div>
+              
+                    <div class="card">
+                      <img class="background" src="./assets/aguarde-pink.gif" alt="">
+              
+                      <div class="card-content">
+                        <div class="profile-image">
+                          
+                        </div>
+              
+                        <h3 class="title">The Last of Us</h3>
+                      </div>
+                      <div class="backdrop"></div>
+                    </div>
+              
+                    <div class="card">
+                      <img class="background" src="./img/friendsbackground.png" alt="">
+              
+                      <div class="card-content">
+                        <div class="profile-image">
+                          
+                        </div>
+              
+                        <h3 class="title">Elden Ring</h3>
+                      </div>
+                      <div class="backdrop"></div>
+                    </div>
+                    <div class="card">
+                      <img class="background" src="./img/friendsbackground.png" alt="">
+              
+                      <div class="card-content">
+                        <div class="profile-image">
+            
+                        </div>
+              
+                        <h3 class="title">GTA 6</h3>
+                      </div>
+                      <div class="backdrop"></div>
+                    </div>
+              
+                    <div class="card">
+                      <img class="background" src="./assets/circle-loading.gif" alt="">
+              
+                      <div class="card-content">
+                        <div class="profile-image">
+            
+                        </div>
+              
+                        <h3 class="title">Spider-Man PS5</h3>
+                      </div>
+                      <div class="backdrop"></div>
+                    </div>
+              
+                    <div class="card">
+                      <img class="background" src="./img/friendsbackground.png" alt="">
+              
+                      <div class="card-content">
+                        <div class="profile-image">
+                          
+                        </div>
+              
+                        <h3 class="title">God Of War</h3>
+                      </div>
+                      <div class="backdrop"></div>
+                    </div>
+              
+                    <div class="card">
+                      <img class="background" src="./assets/aguarde-pink.gif" alt="">
+              
+                      <div class="card-content">
+                        <div class="profile-image">
+                          
+                        </div>
+              
+                        <h3 class="title">The Last of Us</h3>
+                      </div>
+                      <div class="backdrop"></div>
+                    </div>
+              
+                    <div class="card">
+                      <img class="background" src="./img/friendsbackground.png" alt="">
+              
+                      <div class="card-content">
+                        <div class="profile-image">
+                          
+                        </div>
+              
+                        <h3 class="title">Elden Ring</h3>
+                      </div>
+                      <div class="backdrop"></div>
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
         </main>
-
-        
-        
     </div>
-    <div class="graficos">
-        <h3>RANKING GERAL - QUIZ DIFICIL</h3>
-        <div class="barras">
-            <canvas id="rankingChart" width="400" height="200"></canvas>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>
-<script>  
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-    const dados = {
-        labels: ['1º Lugar', '2º Lugar', '3º Lugar', '4º Lugar', '5º Lugar'],
-        datasets: [{
-            label: 'Pontuação',
-            data: [10, 9, 8, 7, 6],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.5)',
-                'rgba(54, 162, 235, 0.5)',
-                'rgba(255, 206, 86, 0.5)',
-                'rgba(75, 192, 192, 0.5)',
-                'rgba(153, 102, 255, 0.5)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)'
-            ],
-            borderWidth: 1
-        }]
-    };
-
-    const opcoes = {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    stepSize: 1,
-                    max: 10 // Define o máximo do eixo Y como 10
-                },
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Pontuação'
-                }
-            }]
-        }
-    };
-
-    const ctx = document.getElementById('rankingChart').getContext('2d');
-    const graficoPontuacoes = new Chart(ctx, {
-        type: 'bar',
-        data: dados,
-        options: opcoes
-    });
-</script>

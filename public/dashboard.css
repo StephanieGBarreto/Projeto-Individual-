@@ -82,7 +82,7 @@ main {
 
 .graficos canvas {
     display: flex;
-    max-width: 700px;
+    max-width: 560px;
     max-height: 400px;
     background-color: #fff;
     border-radius: 10px;
@@ -103,7 +103,7 @@ h2 {
 h3 {
     display: flex;
     color: antiquewhite;
-    margin-left: 257px;
+    margin-left: 165px;
 }
 
 .barras {
@@ -111,4 +111,18 @@ h3 {
     justify-content: center;
     height: 340px;
     width: 730px;
+}
+
+.kpi {
+    display: flex;
+    margin-top: 70px;
+    color: #fff;
+    font-size: 15px;
+    background-color: #4a067c;
+    height: 175px;
+    border-radius: 14px;
+    align-items: center;
+    width: 150vh;
+    border-radius: 30px;
+    padding: 13px;
 }

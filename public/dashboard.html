@@ -19,7 +19,7 @@
                 <li><a href="dashboard.html">Home</a></li>
                 <li><a href="quizzM.html">Quiz Nível Médio</a></li>
                 <li><a href="quizzD.html">Quiz Nível Difícil</a></li>
-                <li><a href="ranking.html">Ranking</a></li>
+                <li><a href="ranking.html">Personagens</a></li>
                 <li><a href="homeSECUNDARIA.html">Voltar ao site</a></li>
                 <li><a href="login.html">Sair</a></li>
             </ul>
@@ -33,29 +33,27 @@
         <main>
             <p>Bem-vindo(a) à sua página de Friends!</p>
         </main>
-
-        
-        
     </div>
+    
     <div class="graficos">
         <h3>Acompanhe a sua pontuação</h3>
         <div class="barras">
             <canvas id="graficoBarras" width="400" height="200"></canvas>
+            <div class="kpi">
+                <p>Aqui você consegue acompanhar os números de acertos e erros referentes ao Quiz de nível dificil.</p>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</body>
+    <script>
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-</html>
-<script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+        var acertos = sessionStorage.getItem('acertos');
+        var erros = sessionStorage.getItem('erros');
 
-     var acertos = sessionStorage.getItem('acertos');
-     var erros = sessionStorage.getItem('erros');
-
-   const dados = {
-            labels: ['Pontuacao',], // Labels para as tentativas
+        const dados = {
+            labels: ['Pontuacao',], // Labels para as pontuação
             datasets: [{
                 label: 'Acertos',
                 data: [acertos], // Quantidade de acertos por tentativa
@@ -100,4 +98,7 @@
             options: opcoes
         });
 
-</script>
+    </script>
+</body>
+
+</html>
