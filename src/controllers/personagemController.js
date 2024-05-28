@@ -22,23 +22,6 @@ function buscarPorId(req, res) {
   });
 }
 
-// function cadastrar(req, res) {
-//   var nome = req.body.nome;
-//   var razaoSocial = req.body.razaoSocial;
-
-//   personagemModel.buscarPornome(nome).then((resultado) => {
-//     if (resultado.length > 0) {
-//       res
-//         .status(401)
-//         .json({ mensagem: `a personagem com o nome ${nome} já existe` });
-//     } else {
-//       personagemModel.cadastrar(razaoSocial, nome).then((resultado) => {
-//         res.status(201).json(resultado);
-//       });
-//     }
-//   });
-// }
-
 module.exports = {
   buscarPornome,
   buscarPorId,

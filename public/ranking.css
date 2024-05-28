@@ -97,9 +97,9 @@ main {
 
 h1 {
     display: flex;
-    color: antiquewhite;
+    color: rgb(254, 231, 200);
     font-size: xx-large;
-    margin-left: 415px;
+    margin-left: 270px;
 }
 
 h2 {
