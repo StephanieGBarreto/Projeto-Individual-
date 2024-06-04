@@ -3,6 +3,7 @@ html{
 }
 
 body {
+  background-image: url(https://th.bing.com/th/id/OIP.H7HAyc7SZ789T2zdmmb_lQHaEK?rs=1&pid=ImgDetMain);
   background-color: gray;
   overflow-x: hidden;
 }
@@ -14,7 +15,7 @@ body {
   flex-direction: row;
   width: 100%;
   height: 8vh;
-  box-shadow: 1vh 1vh 1vh 2vh #1f052c;
+  box-shadow: 1vh 1vh 1vh 1vh #1f052c;
   position: fixed;
   margin-bottom: 100px;
 
@@ -149,7 +150,6 @@ button:hover {
   color: #fff;
   width: 220px;
   padding: 13px;
-  
 }
 
 .monica:hover .original {
@@ -202,7 +202,7 @@ button:hover {
 
 .continuacao1 {
   display: flex;
-  background-image: url(https://i.etsystatic.com/14577676/r/il/81d238/2480310724/il_fullxfull.2480310724_m8d9.jpg);
+  background-image: url(https://i.etsystatic.com/25250934/r/il/dd5af1/2803822442/il_1140xN.2803822442_pidl.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -216,34 +216,140 @@ button:hover {
   font-size: 50px;
   margin-top: 20px;
   color: #8114b6;
-}
-
-.texto1 {
-  background-color: #8014b6bb;
-  color: white;
-  border-radius: 2vw;
-  width: 50ch;
   box-shadow: 1vw 1vh 1vw 1vh black;
-  text-align: center;
-  padding: 30px;
 }
 
 .teste1 {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-direction: column;
-  height: 504px;
+  flex-direction: row;
+  height: 500px;
+  width: 1300px;
+}
+.texto1 {
+  background-color: #8014b6bb;
+  color: white;
+  border-radius: 2vw;
+  width: 60ch;
+  box-shadow: 1vw 1vh 1vw 1vh black;
+  text-align: center;
+  padding: 30px;
 }
 
 .texto2 {
   background-color: #8014b6d4;
   color: white;
   border-radius: 2vw;
-  width: 50ch;
+  width: 48ch;
   box-shadow: 1vw 1vh 1vw 1vh black;
   text-align: center;
   padding: 30px;
+}
+
+.continuacao2 { 
+  display: flex;
+  background-image: url(https://th.bing.com/th/id/OIP.yTpQHEeonNmDceAOP7LJOwHaNL?rs=1&pid=ImgDetMain);
+}
+
+.resenha {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.titulo {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  
+}
+.temporada {
+  display: flex;
+  margin-bottom: 40px;
+}
+.temporada-impar, .temporada-par {
+  flex: 1;
+  padding: 0 20px;
+}
+.temporada-impar {
+  text-align: justify;
+  border-right: 1px solid #ccc;
+  padding-right: 40px;
+}
+.temporada-par {
+  text-align: justify;
+  padding-left: 40px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.continuacao3 {
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 40px;
+  background-color: #b05adcd4;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.titulo1 {
+  color: #333;
+  margin-top: 20px;
+  font-size: 35px;
+  box-shadow: 0 0 10px rgba(234, 228, 228, 0.76);
+}
+.relatosAMIGOS {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.icone {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.icone:hover {
+  background-color: rgba(195, 133, 133, 0.176);
+  border-radius: 10px;
+}
+.icone img {
+  width: 100%;
+  height: 100%;
+  
+}
+.comentarioOculto {
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: none;
+  transition: all 0.5s ease-in-out;
+  font-size: 12px;
+}
+
+.icone:hover .comentarioOculto {
+  display: block;
+  transition: all 0.5s ease-in-out;
 }
 
 .footer {
