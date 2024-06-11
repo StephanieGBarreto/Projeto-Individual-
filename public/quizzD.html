@@ -92,7 +92,7 @@
         sessionStorage.setItem('erros', erros);
         document.getElementById('questao').appendChild(resultado);
         for (let i = 0; i < 4; i++) {
-            document.getElementById('opcao' + (i + 1)).disabled = true; // Desabilita os botões após a resposta
+            document.getElementById('opcao' + (i + 1)).disabled = true; // Desabilita os botões
         }
 
         perguntaAtual++;
@@ -108,17 +108,15 @@
             document.getElementById('acertos').innerHTML = "Acertos: " + acertos;
             document.getElementById('erros').innerHTML = "Erros: " + erros;
             document.getElementById('reiniciar').style.display = "block";
-            document.getElementById('voltar').style.display = "block"; // Mostra o botão "Voltar"
+            document.getElementById('voltar').style.display = "block";
 
-            // fazer fetch no end point de inserção dos dados
-            fetch("http://localhost:3333/banco/guardar", {
+            
+            fetch("http://localhost:8080/banco/guardar", {
                       method: "POST",
                       headers: {
                         "Content-Type": "application/json",
                       },
                       body: JSON.stringify({
-                        // crie um atributo que recebe o valor recuperado aqui
-                        // Agora vá para o arquivo routes/usuario.js
                         fkUsuarioServer: fkUsuarioVar,
                         qtdAcertosServer: acertos,
                         qtdErrosServer: erros
